@@ -10,6 +10,11 @@ import { NewTaskComponent } from './new-task.component';
   outputs: ['onTaskSelect'],
   directives: [TaskComponent, EditTaskDetailsComponent, NewTaskComponent],
   template: `
+  <select>
+    <option value="all">Show All</option>
+    <option value="done">Show Done</option>
+    <option value="notDone" selected="selected">Show Not Done</option>
+  </select>
   <task-display *ngFor="#currentTask of taskList" (click)="taskClicked(currentTask)" [class.selected]="currentTask === selectedTask" [task]="currentTask">
   </task-display>
   <edit-task-details *ngIf="selectedTask" [task]="selectedTask">
