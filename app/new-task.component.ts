@@ -14,7 +14,13 @@ import {Task} from './task.model';
         <option value="normal">Normal priority</option>
         <option value="high">High priority</option>
       </select>
-      <button (click)="addTask(newDescription, newPriority)" class="btn-success btn-lg add-button">Add</button>
+      <label>Category:</label>
+      <select class="col-sm-3" #newCategory>
+        <option value="Work" selected="selected">Work</option>
+        <option value="Hobby">Hobby</option>
+        <option value="Home">Home</option>
+      </select>
+      <button (click)="addTask(newDescription, newPriority, newCategory)" class="btn-success btn-lg add-button">Add</button>
     </div>
   `
 })
@@ -24,8 +30,9 @@ export class NewTaskComponent {
   constructor(){
     this.onSubmitNewTask = new EventEmitter();
   }
-  addTask(userDescription: HTMLInputElement, userPriority: HTMLSelectElement){
-    this.onSubmitNewTask.emit([userDescription.value, userPriority.value]);
+  addTask(userDescription: HTMLInputElement, userPriority: HTMLSelectElement, userCategory: HTMLSelectElement){
+    this.onSubmitNewTask.emit([userDescription.value, userPriority.value, userCategory.value]);
+    console.log(userCategory.value);
     userDescription.value = "";
   }
 }

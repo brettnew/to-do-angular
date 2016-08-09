@@ -38,11 +38,13 @@ export class TaskListComponent {
     this.selectedTask = clickedTask;
     this.onTaskSelect.emit(clickedTask);
   }
-  createTask(description: string, priority: string): void {
+  // user input coming in as array; need to get indexes of array to get properties of task object
+  createTask(description: string, priority: string, category: string): void {
     name = description[0];
     priority = description[1];
+    category = description[2];
     this.taskList.push(
-      new Task(name, this.taskList.length, priority)
+      new Task(name, this.taskList.length, priority, category)
     );
   }
   onChange(filterOption) {
